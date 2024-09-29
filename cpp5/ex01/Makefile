@@ -1,6 +1,6 @@
 NAME = ex01
 
-SRC =	main.cpp
+SRC =	main.cpp Bureaucrat.cpp Form.cpp
 
 CPP = c++
 

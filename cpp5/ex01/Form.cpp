@@ -17,14 +17,14 @@ Form::Form(const std::string &name, int gradeToSign, int gradeToExecute)
 
 // Copy constructor
 Form::Form(const Form &other)
-    : name(other.name), is_signed(other.is_signed),
-      grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute) {
+    : _name(other._name), _isSigned(other._isSigned),
+      _gradeToSigned(other._gradeToSigned), _gradeToExecute(other._gradeToExecute) {
 }
 
 // Assignment operator
 Form &Form::operator=(const Form &other) {
     if (this != &other) {
-        this->is_signed = other.is_signed;
+        this->_isSigned = other._isSigned;
     }
     return *this;
 }
@@ -34,36 +34,36 @@ Form::~Form() {}
 
 // Getters
 const std::string &Form::getName() const {
-    return name;
+    return this->_name;
 }
 
 bool Form::isSigned() const {
-    return is_signed;
+    return this->_isSigned;
 }
 
 int Form::getGradeToSign() const {
-    return grade_to_sign;
+    return this->_gradeToSigned;
 }
 
 int Form::getGradeToExecute() const {
-    return grade_to_execute;
+    return this->_gradeToExecute;
 }
 
 // Check if grade is valid
 void Form::checkGrade(int grade) const {
-    if (grade < 1) {
-        throw GradeTooHighException();
-    } else if (grade > 150) {
+    if (grade < 1)
+       { throw GradeTooHighException();}
+    else if (grade > 150) {
         throw GradeTooLowException();
-    }
+}
 }
 
 // Be signed by a bureaucrat
 void Form::beSigned(const Bureaucrat &bureaucrat) {
-    if (bureaucrat.getGrade() > grade_to_sign) {
+    if (bureaucrat.getGrade() > this->_gradeToSigned) {
         throw GradeTooLowException();
     }
-    is_signed = true;
+    this->_isSigned = true;
 }
 
 // Overload << operator

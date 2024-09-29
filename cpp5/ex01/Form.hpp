@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	private:
@@ -15,9 +17,9 @@ class Form
 	public:
 		Form();
 		~Form();
-		Form(Form &copy);
+		Form(const Form &copy);
 		Form(const std::string &name, int gradeToSign, int gradeToExecute);
-		Form &operator=(Form &other);
+		Form &operator=(const Form &other);
 
 		const std::string &getName() const;
 		bool isSigned() const;
@@ -37,5 +39,7 @@ class Form
 				virtual const char* what() const throw();
 		};
 };
+
+std::ostream &operator<<(std::ostream &out, const Form &Form);
 
 #endif
