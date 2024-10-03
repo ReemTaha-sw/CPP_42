@@ -10,6 +10,7 @@ int main()
         bureaucrat1.incrementGrade();
         std::cout << "After increment: " << bureaucrat1;
 
+        std::cout << "\n";
         Bureaucrat bureaucrat2("Bob", 149);
         std::cout << bureaucrat2;
 
@@ -17,12 +18,10 @@ int main()
         std::cout << "After decrement: " << bureaucrat2;
 
         std::cout << "\n";
-
         Bureaucrat bureaucrat3("Charlie", 151);  // Should throw an exception
-        Bureaucrat bureaucrat4("Charlie", 0);  // Should throw an exception
     }
-    catch (std::exception &e) {
-        std::cerr << "\nException caught: " << e.what();
+    catch (std::exception &error) {
+        std::cerr << "\nException caught: " << error.what();
     }
 
     try {

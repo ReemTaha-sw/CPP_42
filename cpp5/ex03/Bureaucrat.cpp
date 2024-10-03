@@ -19,10 +19,10 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade
     checkGrade(grade);
 }
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	if (this != &obj)
-		this->_grade = obj._grade;
+	if (this != &other)
+		this->_grade = other._grade;
 	return *this;
 }
 
@@ -59,16 +59,26 @@ void Bureaucrat::decrementGrade() {
     this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &form) {
+void Bureaucrat::signForm(AForm &form) {
     try {
         form.beSigned(*this);
-        std::cout << "\n" << this->getName() << " signed " << form.getName() << std::endl;
+        std::cout << this->_name << " signed " << form.getName() << std::endl;
     } catch (std::exception &e) {
-        std::cout << "\n" << this->getName() << " couldn't sign " << form.getName()
+        std::cout << this->_name << " couldn't sign " << form.getName()
                   << " because " << e.what() << std::endl;
     }
 }
 
+void Bureaucrat::executeForm(AForm const &form) const {
+    try {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << std::endl;
+    }
+    catch (std::exception &error) {
+        std::cout << _name << " couldn't execute " << form.getName()
+                  << " because " << error.what() << std::endl;
+    }
+}
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat) {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "\n";

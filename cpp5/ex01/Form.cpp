@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include <iomanip>
 
 const char* Form::GradeTooHighException::what() const throw() {
     return "Form grade is too high!";
@@ -8,20 +9,23 @@ const char* Form::GradeTooLowException::what() const throw() {
     return "Form grade is too low!";
 }
 
-// Constructor
+Form::Form() 
+    : _name("Default Form"), _isSigned(false), _gradeToSigned(150), _gradeToExecute(150) {
+    checkGrade(this->_gradeToSigned);
+    checkGrade(this->_gradeToExecute);
+}
+
 Form::Form(const std::string &name, int gradeToSign, int gradeToExecute)
     : _name(name), _isSigned(false), _gradeToSigned(gradeToSign), _gradeToExecute(gradeToExecute) {
     checkGrade(this->_gradeToSigned);
     checkGrade(this->_gradeToExecute);
 }
 
-// Copy constructor
 Form::Form(const Form &other)
     : _name(other._name), _isSigned(other._isSigned),
       _gradeToSigned(other._gradeToSigned), _gradeToExecute(other._gradeToExecute) {
 }
 
-// Assignment operator
 Form &Form::operator=(const Form &other) {
     if (this != &other) {
         this->_isSigned = other._isSigned;
@@ -29,10 +33,8 @@ Form &Form::operator=(const Form &other) {
     return *this;
 }
 
-// Destructor
 Form::~Form() {}
 
-// Getters
 const std::string &Form::getName() const {
     return this->_name;
 }
@@ -49,7 +51,6 @@ int Form::getGradeToExecute() const {
     return this->_gradeToExecute;
 }
 
-// Check if grade is valid
 void Form::checkGrade(int grade) const {
     if (grade < 1)
        { throw GradeTooHighException();}
@@ -58,18 +59,30 @@ void Form::checkGrade(int grade) const {
 }
 }
 
-// Be signed by a bureaucrat
 void Form::beSigned(const Bureaucrat &bureaucrat) {
+    if (this->_isSigned) {
+        std::cout << this->_name << " is already signed.\n";
+        return;
+    }
+    std::cout << "Attempting to sign form: " << this->_name << "\n";
+    std::cout << "-----------------------------------\n";
+    std::cout << "Required grade to sign: " << this->_gradeToSigned << "\n";
+    std::cout << "Bureaucrat grade:       " << bureaucrat.getGrade() << "\n";
+    std::cout << "-----------------------------------\n";
     if (bureaucrat.getGrade() > this->_gradeToSigned) {
         throw GradeTooLowException();
     }
     this->_isSigned = true;
 }
 
-// Overload << operator
 std::ostream &operator<<(std::ostream &out, const Form &form) {
-    out << "Form: " << form.getName() << ", signed: " << (form.isSigned() ? "Yes" : "No")
-        << ", grade required to sign: " << form.getGradeToSign()
-        << ", grade required to execute: " << form.getGradeToExecute();
+    const int labelWidth = 30;
+
+    out << std::left;
+    out << std::setw(labelWidth) << "Form:" << form.getName() << "\n";
+    out << std::setw(labelWidth) << "signed:" << (form.isSigned() ? "Yes" : "No") << "\n";
+    out << std::setw(labelWidth) << "grade required to sign:" << form.getGradeToSign() << "\n";
+    out << std::setw(labelWidth) << "grade required to execute:" << form.getGradeToExecute() << "\n";
+
     return out;
 }

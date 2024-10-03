@@ -6,14 +6,16 @@ int main() {
         Bureaucrat alice("Alice", 3);
         Bureaucrat bob("Bob", 100);
 
-        Form taxForm("TaxForm", 50, 100);
+        Form formA("FormA", 50, 100);
+        Form formB("FormB", 50, 100);
 
-        std::cout << taxForm << std::endl;
+        std::cout << formA << std::endl;
+        std::cout << formB << std::endl;
 
-        alice.signForm(taxForm);  // Alice should sign successfully
-        std::cout << taxForm << std::endl;
+        alice.signForm(formA);  // Alice should sign successfully
+        std::cout << "\n" << formA << std::endl;
 
-        bob.signForm(taxForm);  // Bob's grade is too low, should throw exception
+        bob.signForm(formB);  // Bob's grade is too low, should throw exception
     }
     catch (std::exception &e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
