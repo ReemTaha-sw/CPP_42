@@ -8,13 +8,15 @@ int main() {
         Bureaucrat alice("Alice", 1);
 
         AForm* form1 = someRandomIntern.makeForm("robotomy request", "Bender");
+        std::cout << "\n";
         alice.signForm(*form1);
         std::cout << "\n";
         alice.executeForm(*form1);
         delete form1;
         std::cout << "\n";
 
-        AForm* form2 = someRandomIntern.makeForm("shrubbery creation", "Home");
+        AForm* form2 = someRandomIntern.makeForm("shrubbery creation", "home");
+        std::cout << "\n";
         alice.signForm(*form2);
         std::cout << "\n";
         alice.executeForm(*form2);
@@ -22,6 +24,7 @@ int main() {
         std::cout << "\n";
 
         AForm* form3 = someRandomIntern.makeForm("presidential pardon", "Ford Prefect");
+        std::cout << "\n";
         alice.signForm(*form3);
         std::cout << "\n";
         alice.executeForm(*form3);
