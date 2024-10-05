@@ -93,10 +93,7 @@ void ScalarConverter::convert(const std::string &literal)
         std::cout << "The data type is: int\n";
         if (temp > INT_MAX || temp < INT_MIN) {
             std::cout << "char: impossible\n";
-        //     std::cout << "\033[31m"<<"int: Greater than int MAX: " << temp << "\033[0m\n";
-        // } else if (temp < INT_MIN) {
             std::cout << "int: impossible\n";
-        //     std::cout << "int: Less than int MIN: " << temp << '\n';
         } else {
             i = static_cast<int>(temp);
             std::cout << "char: " << intToChar(i) << '\n';
@@ -121,8 +118,9 @@ void ScalarConverter::convert(const std::string &literal)
     // converting to float
     errno = 0;
     std::string modifiedLiteral = literal;
-    if (modifiedLiteral.back() == 'f' || modifiedLiteral.back() == 'F')
-        modifiedLiteral.pop_back();
+    if (modifiedLiteral[modifiedLiteral.length() - 1] == 'f' || 
+        modifiedLiteral[modifiedLiteral.length() - 1] == 'F')
+            modifiedLiteral.resize(modifiedLiteral.length() - 1);
     f = std::strtof(modifiedLiteral.c_str(), &endChecker);
     if (errno == 0 && *endChecker == '\0')
     {
@@ -137,5 +135,3 @@ void ScalarConverter::convert(const std::string &literal)
 
     std::cerr << "Error: Invaalid Literal.\n";
 }
-
-// int x = 2147483648;

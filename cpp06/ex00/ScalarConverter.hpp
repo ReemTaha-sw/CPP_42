@@ -8,6 +8,7 @@
 #include <limits>     // For std::numeric_limits
 #include <sstream>    // For std::stringstream
 #include <iomanip>	  // std::fixed
+#include <climits>	  // int_max
 
 class ScalarConverter
 {
