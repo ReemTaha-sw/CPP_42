@@ -3,6 +3,8 @@
 #include "B.hpp"
 #include "C.hpp"
 #include <ctime>
+#include <cstdlib>
+#include <typeinfo>
 
 Base::~Base()
 {
@@ -23,6 +25,7 @@ Base* generate(void) {
         std::cout << "Generating C" << std::endl;
         return new C();
     }
+    return NULL;
 }
 
 // Function to identify the type of object using a pointer
