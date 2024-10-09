@@ -6,7 +6,7 @@
 template <typename T, size_t sizeOfArray, typename Func>
 void iter(T (&array)[sizeOfArray], size_t length, Func func)
 {
-    if (sizeOfArray >= length && array != NULL && length != 0)
+    if (sizeOfArray >= length && length != 0)
         for (size_t i = 0; i < length; i++)
             func(array[i]);
     else
