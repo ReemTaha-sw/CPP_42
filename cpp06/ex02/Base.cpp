@@ -28,7 +28,6 @@ Base* generate(void) {
     return NULL;
 }
 
-// Function to identify the type of object using a pointer
 void identify(Base* p) {
     if (dynamic_cast<A*>(p))
         std::cout << "A" << std::endl;
@@ -40,7 +39,6 @@ void identify(Base* p) {
         std::cout << "Unknown type" << std::endl;
 }
 
-// Function to identify the type of object using a reference
 void identify(Base& p) {
     try {
         A& a = dynamic_cast<A&>(p);
