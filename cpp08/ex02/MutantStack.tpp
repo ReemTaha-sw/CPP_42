@@ -12,8 +12,10 @@ MutantStack<T>::MutantStack(const MutantStack<T> &copy) : std::stack<T>(copy) {}
 template <typename T>
 MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T> &other)
 {
-     if (this != &other)
+    if (this != &other)
+    {
         std::stack<T>::operator=(other);
+    }
 	return *this;
 }
 
