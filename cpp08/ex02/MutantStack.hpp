@@ -12,7 +12,7 @@ class MutantStack : public std::stack<T>
 	private:
 	public:
 		MutantStack();
-		virtual ~MutantStack();
+		~MutantStack();
 		MutantStack(const MutantStack<T> &copy);
 		MutantStack<T> &operator=(const MutantStack<T> &other);
 
