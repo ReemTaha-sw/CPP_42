@@ -59,3 +59,7 @@ const char* Span::NotEnoughNumbersException::what() const throw()
 {
 	return "Not enough numbers to calculate a span!\n";
 }
+
+const std::vector<int>& Span::getNumbers() const {
+        return this->_numbers;
+}

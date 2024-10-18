@@ -35,6 +35,8 @@ class Span
 
         template <typename T>
         void addNumbers(T begin, T end);
+
+        const std::vector<int> &getNumbers() const;
 };
 
 #include "Span.tpp"
