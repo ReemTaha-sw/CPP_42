@@ -1,16 +1,15 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 
+#include <iostream>
 #include <vector>
 #include <deque>
-#include <iostream>
 #include <string>
-#include <ctime>
 #include <cstdlib>
-#include <limits>
-#include <iomanip> // For controlling floating-point precision
 #include <sstream>
 #include <sys/time.h>
+#include <climits>
+#include <iomanip>
 
 
 class PmergeMe
@@ -18,8 +17,8 @@ class PmergeMe
 	private:
 		std::vector<int> _vec;
 		std::deque<int> _deq;
-		float _vectorSortTime;
-		float _dequeSortTime;
+		double _vectorSortTime;
+		double _dequeSortTime;
 		
 		void _mergeInsertSortVector();
 		void _mergeInsertSortDeque();
@@ -35,12 +34,12 @@ class PmergeMe
 		bool setVector(const std::vector<int> &inputVec);
 		void sortVector();
 		void printVector() const; 
-		float getVectorSortTime() const;
+		double getVectorSortTime() const;
 
 		bool setDeque(const std::deque<int> &inputDeq);
 		void sortDeque();
 		void printDeque() const;
-		float getDequeSortTime() const;
+		double getDequeSortTime() const;
 
 };
 

@@ -34,7 +34,7 @@ int RPN::evaluate(const std::string &expression) {
             number = number * 10 + (token[i] - '0');
         }
 
-        if (isNumber) {
+        if (isNumber && token.length() == 1 && std::isdigit(token[0])) {
             stack.push(number);
         } 
 		else if (token == "+" || token == "-" || token == "*" || token == "/")

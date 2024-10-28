@@ -8,9 +8,6 @@ int main(int argc, char** argv) {
 
     int result = RPN::evaluate(argv[1]);
     if (result == -1)
-        // std::cout << result << std::endl;
-    // else
         return 1;
-
     return 0;
 }

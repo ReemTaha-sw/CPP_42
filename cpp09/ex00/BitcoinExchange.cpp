@@ -12,6 +12,9 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &obj)
 	return *this;
 }
 
+bool BitcoinExchange::NotSpace::operator()(unsigned char ch) const {
+    return !std::isspace(ch);
+}
 
 bool BitcoinExchange::parseDataFile(const std::string &fileName)
 {

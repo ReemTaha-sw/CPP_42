@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
     std::cout << "After: ";
     sorter.printVector();
     std::cout << "Time to process a range of " << inputVec.size()
-              << " elements with std::vector: " << sorter.getVectorSortTime() << " us" << std::endl;
+              << " elements with std::vector: " << std::fixed << std::setprecision(4) << sorter.getVectorSortTime() << " us" << std::endl;
     std::cout << "Time to process a range of " << inputDeq.size()
-              << " elements with std::deque: " << sorter.getDequeSortTime() << " us" << std::endl;
+              << " elements with std::deque: " << std::fixed << std::setprecision(4) << sorter.getDequeSortTime() << " us" << std::endl;
 }

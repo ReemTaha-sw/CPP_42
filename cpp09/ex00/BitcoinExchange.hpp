@@ -6,15 +6,16 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
+#include <algorithm>
+#include <limits>
 
 class BitcoinExchange
 {
 	private:
 		std::map<std::string, float> _exchangeRates;
 		struct NotSpace {
-		    bool operator()(unsigned char ch) const {
-		        return !std::isspace(ch);
-		    }
+		    bool operator()(unsigned char ch) const;
 		};
 		bool _isValidPositiveNumber(const std::string &value);
 		bool _isValidDate(const std::string &date);

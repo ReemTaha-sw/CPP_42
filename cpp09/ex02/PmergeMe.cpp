@@ -33,7 +33,7 @@ void PmergeMe::sortVector() {
     gettimeofday(&startVec, NULL);
     _mergeInsertSortVector();
     gettimeofday(&endVec, NULL);
-    _vectorSortTime = (endVec.tv_sec - startVec.tv_sec) * 1000000.0 + (endVec.tv_usec - startVec.tv_usec); // Average time
+    _vectorSortTime = (endVec.tv_sec - startVec.tv_sec) * 1000000.0 + (endVec.tv_usec - startVec.tv_usec);
 }
 
 void PmergeMe::sortDeque() {
@@ -41,7 +41,7 @@ void PmergeMe::sortDeque() {
     gettimeofday(&startDeq, NULL);
     _mergeInsertSortDeque();
     gettimeofday(&endDeq, NULL);    
-    _dequeSortTime = (endDeq.tv_sec - startDeq.tv_sec) * 1000000 + (endDeq.tv_usec - startDeq.tv_usec);
+    _dequeSortTime = (endDeq.tv_sec - startDeq.tv_sec) * 1000000.0 + (endDeq.tv_usec - startDeq.tv_usec);
 }
 
 void PmergeMe::printVector() const {
@@ -158,5 +158,5 @@ void PmergeMe::_mergeInsertSortDeque() {
 }
 
 
-float PmergeMe::getVectorSortTime() const { return _vectorSortTime; }
-float PmergeMe::getDequeSortTime() const { return _dequeSortTime; }
+double PmergeMe::getVectorSortTime() const { return _vectorSortTime; }
+double PmergeMe::getDequeSortTime() const { return _dequeSortTime; }

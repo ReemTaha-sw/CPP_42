@@ -2,6 +2,8 @@ NAME = btc
 
 SRC =	main.cpp BitcoinExchange.cpp
 
+HEADER = BitcoinExchange.hpp
+
 CPP = c++
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -11,7 +13,7 @@ OBJ = $(SRC:.cpp=.o)
 %.o: %.cpp
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 	@echo "🥣 .o was MADE."
 	$(CPP) $(CPPFLAGS) $(SRC) -o $(NAME)
 
