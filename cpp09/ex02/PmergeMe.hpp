@@ -51,16 +51,14 @@ bool PmergeMe::_isValidNumber(const Container &input)
     for (it = input.begin(); it != input.end(); ++it)
     {
         std::stringstream ss;
-        ss << *it;  // Convert the element to a string
+        ss << *it;
         
         int number;
-        // Try converting the string back to an integer
         if (!(ss >> number)) 
         {
             std::cerr << "Error: Not a valid number.\n";
             return false;
         }
-        // Check if there's still something left in the stream
         if (ss.fail() || !ss.eof()) 
         {
             std::cerr << "Error: Not a valid number.\n";

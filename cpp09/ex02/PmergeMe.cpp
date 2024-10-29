@@ -94,7 +94,6 @@ void PmergeMe::_mergeInsertSortVector() {
     std::vector<std::pair<int, int> > pairs;
     std::vector<int> result;
 
-    // Step 1: Create pairs and sort within pairs
     for (size_t i = 0; i + 1 < _vec.size(); i += 2) {
         if (_vec[i] > _vec[i + 1]) {
             pairs.push_back(std::make_pair(_vec[i + 1], _vec[i]));
@@ -103,32 +102,26 @@ void PmergeMe::_mergeInsertSortVector() {
         }
     }
 
-    // If odd number of elements, add last element
     if (_vec.size() % 2 == 1) {
         result.push_back(_vec.back());
     }
 
-    // Step 2: Insert the larger elements from pairs into the result vector
     for (size_t i = 0; i < pairs.size(); ++i) {
         result.push_back(pairs[i].second);
     }
 
-    // Step 3: Merge smaller elements from pairs into the result vector
     for (size_t i = 0; i < pairs.size(); ++i) {
         std::vector<int>::iterator it = std::lower_bound(result.begin(), result.end(), pairs[i].first);
         result.insert(it, pairs[i].first);
     }
 
-    // Step 4: Copy sorted result back to _vec
     _vec = result;
 }
 
-// Merge-insert sort for deque
 void PmergeMe::_mergeInsertSortDeque() {
     std::deque<std::pair<int, int> > pairs;
     std::deque<int> result;
 
-    // Step 1: Create pairs and sort within pairs
     for (size_t i = 0; i + 1 < _deq.size(); i += 2) {
         if (_deq[i] > _deq[i + 1]) {
             pairs.push_back(std::make_pair(_deq[i + 1], _deq[i]));
@@ -137,23 +130,19 @@ void PmergeMe::_mergeInsertSortDeque() {
         }
     }
 
-    // If odd number of elements, add last element
     if (_deq.size() % 2 == 1) {
         result.push_back(_deq.back());
     }
 
-    // Step 2: Insert the larger elements from pairs into the result deque
     for (size_t i = 0; i < pairs.size(); ++i) {
         result.push_back(pairs[i].second);
     }
 
-    // Step 3: Merge smaller elements from pairs into the result deque
     for (size_t i = 0; i < pairs.size(); ++i) {
         std::deque<int>::iterator it = std::lower_bound(result.begin(), result.end(), pairs[i].first);
         result.insert(it, pairs[i].first);
     }
 
-    // Step 4: Copy sorted result back to _deq
     _deq = result;
 }
 
