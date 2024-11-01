@@ -115,6 +115,8 @@ void PmergeMe::_mergeInsertSortVector() {
         result.insert(it, pairs[i].first);
     }
 
+    mergeSortedPairs(result, result.begin(), result.end());
+
     _vec = result;
 }
 
@@ -142,6 +144,8 @@ void PmergeMe::_mergeInsertSortDeque() {
         std::deque<int>::iterator it = std::lower_bound(result.begin(), result.end(), pairs[i].first);
         result.insert(it, pairs[i].first);
     }
+
+    mergeSortedPairs(result, result.begin(), result.end());
 
     _deq = result;
 }
